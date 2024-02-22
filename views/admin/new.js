@@ -46,7 +46,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Enter Post Content</strong>
                     </label>
                     <div class="control">
-                        <textarea type="file" id="post-content" name="postContent"  value="${errors && values.postContent && values.postContent !== '' ? values.postContent : ''}"></textarea>
+                        <textarea id="post-content" name="postContent"  value="${errors && values.postContent && values.postContent !== '' ? values.postContent : ''}"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="button" id="create-post-btn">Create Post</button>
