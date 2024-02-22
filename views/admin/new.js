@@ -16,7 +16,7 @@ const newPostPage = ({ errors, values = {} }) => {
                     `
                 : ''}
             </div>
-            <form action="/new" method="POST">
+            <form action="/admin/new" method="POST">
                 <div class="field">
                     <label for="author" class="label">
                         <strong>Enter Author Name</strong>

@@ -5,6 +5,7 @@ import getAllPosts from "../../utils/getAllPosts.js"
 import { createHash } from "node:crypto"
 import { readFile } from "node:fs/promises"
 import { writeFile } from 'node:fs/promises'
+import { validationResult } from "express-validator"
 
 export const getIndex = (req, res, next) => {
     res.send(indexPage())
@@ -57,7 +58,7 @@ export const postLogin = async (req, res, next) => {
         encoding: 'utf-8'
     })
 
-    const user = admins.filter(admin => admin.email === req.body.email)
+    const user = JSON.parse(admins).filter(admin => admin.email === req.body.email)[0]
 
     const [hashed, salt] = user.password.split('.')
 
@@ -65,7 +66,7 @@ export const postLogin = async (req, res, next) => {
 
     if (user && hashed === hashedSupplied) {
         req.session.userId = user.id
-        res.redirect('/admin/index')
+        res.redirect('/admin')
     } else {
         return res.send(loginPage({ errors, values: req.body }))
     }

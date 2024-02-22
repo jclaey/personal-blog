@@ -5,13 +5,14 @@ import {
     getIndex,
     getNew,
     createNew,
-    getLogin
+    getLogin,
+    postLogin
 } from '../../controllers/admin/index.js'
 
 const router = express.Router()
 
-router.route('/').get(asyncHandler(getIndex))
+router.route('/').get(getIndex)
 router.route('/new').get(getNew).post(asyncHandler(createNew))
-router.route('/login').get(getLogin)
+router.route('/login').get(getLogin).post(asyncHandler(postLogin))
 
 export default router
