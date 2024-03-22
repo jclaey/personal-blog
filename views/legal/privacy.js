@@ -1,4 +1,4 @@
-import layout from "../layout"
+import layout from "../layout.js"
 
 const privacyPage = () => {
     return layout({ template: `

@@ -1,5 +1,5 @@
 import { body } from "express-validator"
-import sanitize from "./sanitize"
+import sanitize from "./sanitize.js"
 
 export const validateAuthorName = 
     sanitize(body('author')
