@@ -6,6 +6,9 @@ import express from 'express'
 import cookieSession from 'cookie-session'
 import index from './routes/index.js'
 import admin from './routes/admin/index.js'
+import connectDB from './config/db.js'
+
+connectDB()
 
 // Initialize express
 const app = express()

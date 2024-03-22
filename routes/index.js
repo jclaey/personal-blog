@@ -1,6 +1,5 @@
 import express from 'express'
 import asyncHandler from '../middleware/async.js'
-
 import {
     getIndex,
     getPrivacy,
