@@ -19,15 +19,23 @@ const newPostPage = ({ errors, values = {} }) => {
             <form action="/admin/new" method="POST">
                 <div class="field">
                     <label for="author" class="label">
-                        <strong>Enter Author Name</strong>
+                        <strong>Author Name</strong>
                     </label>
                     <div class="control">
                         <input type="text" id="author" name="author" value="${errors && values.author && values.author !== '' ? values.author : ''}">
                     </div>
                 </div>
                 <div class="field">
+                    <label for="author" class="label">
+                        <strong>Post Description</strong>
+                    </label>
+                    <div class="control">
+                        <input type="text" id="description" name="description" value="${errors && values.description && values.description !== '' ? values.description : ''}">
+                    </div>
+                </div>
+                <div class="field">
                     <label for="title" class="label">
-                        <strong>Enter Post Title</strong>
+                        <strong>Post Title</strong>
                     </label>
                     <div class="control">
                         <input type="text" id="title" name="title" value="${errors && values.title && values.title !== '' ? values.title : ''}">
@@ -35,18 +43,18 @@ const newPostPage = ({ errors, values = {} }) => {
                 </div>
                 <div class="field">
                     <label for="featured-image" class="label">
-                        <strong>Add Featured Image</strong>
+                        <strong>Post Image</strong>
                     </label>
                     <div class="control">
-                        <input type="file" id="featured-image" name="featuredImage">
+                        <input type="file" id="featured-image" name="image">
                     </div>
                 </div>
                 <div class="field">
                     <label for="post-content" class="label">
-                        <strong>Enter Post Content</strong>
+                        <strong>Post Content</strong>
                     </label>
                     <div class="control">
-                        <textarea id="post-content" name="postContent"  value="${errors && values.postContent && values.postContent !== '' ? values.postContent : ''}"></textarea>
+                        <textarea id="post-content" name="content"  value="${errors && values.content && values.content !== '' ? values.content : ''}"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="button" id="create-post-btn">Create Post</button>

@@ -36,7 +36,7 @@ const loginPage = ({ errors }, req) => {
                 <button type="submit" class="button" id="admin-login-btn">Login</button>
             </form>
         </main>
-    ` })
+    ` }, req)
 }
 
 export default loginPage

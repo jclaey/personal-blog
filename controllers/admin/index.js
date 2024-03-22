@@ -1,14 +1,19 @@
 import indexPage from "../../views/admin/index.js"
 import newPostPage from "../../views/admin/new.js"
 import loginPage from '../../views/admin/login.js'
-import getAllPosts from "../../utils/getAllPosts.js"
-import { createHash } from "node:crypto"
-import { readFile } from "node:fs/promises"
-import { writeFile } from 'node:fs/promises'
+import Admin from "../../models/Admin.js"
+import Post from "../../models/Post.js"
 import { validationResult } from "express-validator"
 
-export const getIndex = (req, res, next) => {
-    res.send(indexPage())
+export const getIndex = async (req, res, next) => {
+    const posts = await Post.find({})
+
+    if (!posts) {
+        res.status(404)
+        throw new Error('Could not get posts')
+    }
+
+    res.send(indexPage({ posts }, req))
 }
 
 export const getNew = (req, res, next) => {
@@ -22,26 +27,20 @@ export const createNew = async (req, res, next) => {
         return res.send(newPostPage({ errors, values: req.body }))
     }
 
-    const posts = await getAllPosts()
+    const post = await Post.create(req.body)
 
-    if (posts) {
-        const hasLength = posts.length > 0 ? true : false
-
-        const post = {
-            id: hasLength ? posts[posts.length - 1].id + 1 : 1,
-            author: req.body.author,
-            title: req.body.title,
-            content: req.body.postContent,
-            date: Date.now()
-        }
-
-        posts.push(post)
-
-        await writeFile('posts.json', JSON.stringify(posts))
-
-        res.redirect('/')
+    if (post) {
+        res.redirect('/admin/index')
+    } else {
+        if (process.env.NODE_ENV === 'development') {
+            res.status(500)
+            throw new Error('Server error')
+          } else {
+            res.redirect('/failure')
+          }
     }
 }
+
 
 export const getLogin = (req, res, next) => {
     res.send(loginPage({}))
@@ -54,20 +53,11 @@ export const postLogin = async (req, res, next) => {
         return res.send(loginPage({ errors, values: req.body }))
     }
 
-    const admins = await readFile('users.json', {
-        encoding: 'utf-8'
-    })
+    const { email } = req.body
 
-    const user = JSON.parse(admins).filter(admin => admin.email === req.body.email)[0]
+    const admin = await Admin.findOne({ email })
 
-    const [hashed, salt] = user.password.split('.')
+    req.session.userId = String(admin._id)
 
-    const hashedSupplied = createHash('sha256').update(req.body.password + salt).digest('hex')
-
-    if (user && hashed === hashedSupplied) {
-        req.session.userId = user.id
-        res.redirect('/admin')
-    } else {
-        return res.send(loginPage({ errors, values: req.body }))
-    }
+    res.redirect('/admin/index')
 }
