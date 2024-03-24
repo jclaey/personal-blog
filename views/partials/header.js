@@ -2,11 +2,11 @@ const header = () => {
     return `
         <nav>
             <div class="nav-left">
-                <a href="../../index.html">Personal Blog</a>
+                <a href="/">Personal Blog</a>
             </div>
             <div class="nav-right">
-                <a href="../../index.html">Blog Posts</a>
-                <a href="../../pages/about.html">About</a>
+                <a href="/">Blog Posts</a>
+                <a href="/about">About</a>
             </div>
         </nav>
         <div class="brand mb-4">
