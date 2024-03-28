@@ -6,8 +6,8 @@ const indexPage = ({ posts }, req) => {
             return `
                 <div class="card">
                     <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="${post.image.path}" alt="Post image" />
+                        <figure class="image">
+                            <img src="${post.image.path}" alt="Post image" id="card-image"/>
                         </figure>
                     </div>
                     <div class="card-content">
@@ -15,6 +15,11 @@ const indexPage = ({ posts }, req) => {
                             ${post.description}
                             <br />
                             ${post.createdAt}
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer-item">
+                            <a href="/post/1">Read Post</a>
                         </div>
                     </div>
                 </div>
@@ -25,7 +30,7 @@ const indexPage = ({ posts }, req) => {
     return layout({ template: `
         <main>
             <section>
-                <h1>Most Recent Posts</h1>
+                <h1 class="title is-size-1">Most Recent Posts</h1>
                 <div>${renderedPosts()}</div>
             </section>
         </main>

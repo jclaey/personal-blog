@@ -3,20 +3,25 @@ import sanitize from "./sanitize.js"
 
 export const validateAuthorName = 
     sanitize(body('author')
+    .isEmpty()
+    .withMessage('Please enter an author name')
     .trim()
-    .isLength({ min: 1, max: 30 })
-    .withMessage('Author name must be between 1 and 30 characters')
     .escape())
 
 export const validateTitle = 
     sanitize(body('title')
+    .isEmpty()
+    .withMessage('Please enter a title')
     .trim()
-    .isLength({ min: 1, max: 50 })
-    .withMessage('Title must be between 1 and 50 characters')
     .escape())
 
 export const validatePostContent =
-    sanitize(body('postContent')
+    sanitize(body('content')
+    .trim()
+    .escape())
+
+export const validateDescription = 
+    sanitize(body('description')
     .trim()
     .escape())
 

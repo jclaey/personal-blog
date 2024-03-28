@@ -1,3 +1,4 @@
+// import { cloudinary } from '../../cloudinary/index.js'
 import indexPage from "../../views/admin/index.js"
 import newPostPage from "../../views/admin/new.js"
 import loginPage from '../../views/admin/login.js'
@@ -27,10 +28,20 @@ export const createNew = async (req, res, next) => {
         return res.send(newPostPage({ errors, values: req.body }))
     }
 
-    const post = await Post.create(req.body)
+    const post = new Post({
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description,
+        content: req.body.content,
+        image: {
+            path: req.file.path,
+            filename: req.file.filename
+        }
+    })
 
     if (post) {
-        res.redirect('/admin/index')
+        await post.save()
+        res.redirect('/admin')
     } else {
         if (process.env.NODE_ENV === 'development') {
             res.status(500)
@@ -40,7 +51,6 @@ export const createNew = async (req, res, next) => {
           }
     }
 }
-
 
 export const getLogin = (req, res, next) => {
     res.send(loginPage({}))
@@ -57,7 +67,16 @@ export const postLogin = async (req, res, next) => {
 
     const admin = await Admin.findOne({ email })
 
-    req.session.userId = String(admin._id)
-
-    res.redirect('/admin/index')
+    if (admin) {
+        req.session.userId = String(admin._id)
+        res.redirect('/admin')
+    } else {
+        if (process.env.NODE_ENV === 'development') {
+            res.status(400)
+            throw new Error('Invalid credentials')
+        } else {
+            // This is not good error handling. Will need to fix later
+            res.redirect('/failure')
+        }
+    }
 }

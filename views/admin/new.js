@@ -16,7 +16,7 @@ const newPostPage = ({ errors, values = {} }) => {
                     `
                 : ''}
             </div>
-            <form action="/admin/new" method="POST">
+            <form action="/admin/new" method="POST" enctype="multipart/form-data">
                 <div class="field">
                     <label for="author" class="label">
                         <strong>Author Name</strong>
@@ -46,7 +46,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Post Image</strong>
                     </label>
                     <div class="control">
-                        <input type="file" id="featured-image" name="image">
+                        <input type="file" id="featured-image" accept="images/*" name="image">
                     </div>
                 </div>
                 <div class="field">
@@ -54,7 +54,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Post Content</strong>
                     </label>
                     <div class="control">
-                        <textarea id="post-content" name="content"  value="${errors && values.content && values.content !== '' ? values.content : ''}"></textarea>
+                        <textarea id="post-content" name="content">${errors && values.content && values.content !== '' ? values.content : ''}</textarea>
                     </div>
                 </div>
                 <button type="submit" class="button" id="create-post-btn">Create Post</button>

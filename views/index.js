@@ -1,5 +1,4 @@
 import layout from "./layout.js"
-import getAllPosts from "../utils/getAllPosts.js"
 
 const indexPage = ({ posts }) => {
     const renderPosts = posts.map(post => {
