@@ -2,6 +2,7 @@ import indexPage from "../views/index.js"
 import aboutPage from '../views/about.js'
 import privacyPage from "../views/legal/privacy.js"
 import termsPage from "../views/legal/terms.js"
+import postPage from "../views/post.js"
 import Post from "../models/Post.js"
 
 export const getIndex = async (req, res, next) => {

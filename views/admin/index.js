@@ -19,7 +19,7 @@ const indexPage = ({ posts }, req) => {
                     </div>
                     <div class="card-footer">
                         <div class="card-footer-item">
-                            <a href="/post/1">Read Post</a>
+                            <a href="/posts/${post._id}">Read Post</a>
                         </div>
                     </div>
                 </div>
