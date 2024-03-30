@@ -7,6 +7,10 @@ const header = (req = null) => {
             <div class="nav-right">
                 <a href="/">Blog Posts</a>
                 <a href="/about">About</a>
+                ${req && req.session && req.session.userId 
+                    ? `<a href="/admin/logout">Sign Out</a>`
+                    : ``
+                }
             </div>
         </nav>
         <div class="brand mb-4">

@@ -4,7 +4,7 @@ import { getErrors } from "../../utils/getErrors.js"
 const newPostPage = ({ errors, values = {} }) => {
     return layout({ template: `
         <main>
-            <h1>Create A New Blog Post</h1>
+            <h2 class="subtitle is-size-2">Create A New Blog Post</h2>
             <div>
                 ${errors ? 
                     `
@@ -22,7 +22,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Author Name</strong>
                     </label>
                     <div class="control">
-                        <input type="text" id="author" name="author" value="${errors && values.author && values.author !== '' ? values.author : ''}">
+                        <input type="text" id="author" name="author" value="${errors && values.author && values.author !== '' ? values.author : ''}" class="input">
                     </div>
                 </div>
                 <div class="field">
@@ -30,7 +30,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Post Description</strong>
                     </label>
                     <div class="control">
-                        <input type="text" id="description" name="description" value="${errors && values.description && values.description !== '' ? values.description : ''}">
+                        <input type="text" id="description" name="description" value="${errors && values.description && values.description !== '' ? values.description : ''}" class="input">
                     </div>
                 </div>
                 <div class="field">
@@ -38,7 +38,7 @@ const newPostPage = ({ errors, values = {} }) => {
                         <strong>Post Title</strong>
                     </label>
                     <div class="control">
-                        <input type="text" id="title" name="title" value="${errors && values.title && values.title !== '' ? values.title : ''}">
+                        <input type="text" id="title" name="title" value="${errors && values.title && values.title !== '' ? values.title : ''}" class="input">
                     </div>
                 </div>
                 <div class="field">
