@@ -80,3 +80,8 @@ export const postLogin = async (req, res, next) => {
         }
     }
 }
+
+export const getLogout = (req, res, next) => {
+    req.session = null
+    res.redirect('/admin/login')
+}

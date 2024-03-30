@@ -1,4 +1,4 @@
-const header = () => {
+const header = (req = null) => {
     return `
         <nav>
             <div class="nav-left">

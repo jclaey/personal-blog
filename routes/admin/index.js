@@ -18,11 +18,13 @@ import {
     getNew,
     createNew,
     getLogin,
-    postLogin
+    postLogin,
+    getLogout
 } from '../../controllers/admin/index.js'
 
 router.route('/').get(requireAuth, asyncHandler(getIndex))
 router.route('/new').get(requireAuth, getNew).post(requireAuth, [validateAuthorName, validatePostContent, validateDescription, validateTitle], parser.single('image'), asyncHandler(createNew))
 router.route('/login').get(getLogin).post([requireValidEmail, requireValidPasswordForUser], asyncHandler(postLogin))
+router.route('/logout').get(getLogout)
 
 export default router
