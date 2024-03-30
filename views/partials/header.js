@@ -1,24 +1,36 @@
 const header = (req = null) => {
     return `
-        <nav>
-            <div class="nav-left">
-                <a href="/">Personal Blog</a>
+        <nav class="navbar">
+            <div class="nav-left navbar-brand">
+                <a href="/" class="navbar-item">Personal Blog</a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
             </div>
-            <div class="nav-right">
-                <a href="/">Blog Posts</a>
-                <a href="/about">About</a>
-                ${req && req.session && req.session.userId 
-                    ? `<a href="/admin/logout">Sign Out</a>`
-                    : ``
-                }
+            <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+            <a href="/" class="navbar-item">
+                Home
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                <a href="/about" class="navbar-item">
+                    About
+                </a>
+                <a href="/contact" class="navbar-item">
+                    Contact
+                </a>
+                </div>
+            </div>
             </div>
         </nav>
-        <div class="brand mb-4">
-            <figure class="image is-96x96">
-                <img src="" alt="Simple Test Generator logo" height="50" width="50">
-            </figure>
-            <h1>Personal Blog</h1>
-        </div>
     `
 }
 

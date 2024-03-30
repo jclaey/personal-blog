@@ -30,6 +30,7 @@ const indexPage = ({ posts }) => {
     return layout({ template: `
         <main>
             <section id="posts-section">
+                <h1 class="title is-size-1">Most Recent Posts</h1>
                 ${renderedPosts()}
             </section>
         </main>

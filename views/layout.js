@@ -18,8 +18,10 @@ const layout = ({ template }, req) => {
             <header>
               ${header(req)}
             </header>
-            ${template}
-            <footer class="page-footer">
+            <div class="mb-6">
+              ${template}
+            </div>
+            <footer class="page-footer footer">
               ${footer()}
             </footer>
 
