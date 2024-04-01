@@ -21,3 +21,31 @@
 #single-post section p {
     margin-bottom: 3rem;
 }
+
+.navbar {
+    margin-bottom: 3rem;
+}
+
+#posts-section h1 {
+    margin-bottom: 3rem;
+}
+
+footer {
+    height: 320px;
+}
+
+.footer .columns {
+    margin-bottom: 5rem;
+}
+
+#footer-built-by p {
+    font-size: 19px;
+}
+
+main {
+    min-height: 500px;
+}
+
+#title-admin-login {
+    margin-bottom: 5rem;
+}

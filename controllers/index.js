@@ -9,7 +9,7 @@ export const getIndex = async (req, res, next) => {
     const posts = await Post.find({})
 
     if (posts) {
-        res.send(indexPage({ posts }))
+        res.send(indexPage({ posts }, req))
     } else {
         res.status(500)
         throw new Error('Resource not found')

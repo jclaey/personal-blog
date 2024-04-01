@@ -14,11 +14,11 @@ const layout = ({ template }, req) => {
             <link rel="stylesheet" href="/stylesheets/index.css">
             <title>Some Business</title>
           </head>
-          <body class="container">
+          <body>
             <header>
               ${header(req)}
             </header>
-            <div class="mb-6">
+            <div class="mb-6 container">
               ${template}
             </div>
             <footer class="page-footer footer">

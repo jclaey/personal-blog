@@ -18,7 +18,7 @@ export const getIndex = async (req, res, next) => {
 }
 
 export const getNew = (req, res, next) => {
-    res.send(newPostPage({}))
+    res.send(newPostPage({}, req))
 }
 
 export const createNew = async (req, res, next) => {

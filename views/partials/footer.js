@@ -1,18 +1,22 @@
 const footer = () => {
     return `
-        <div id="footer-legal" class="mb-3 footer">
+        <div class="mb-3 footer">
             <div class="columns">
                 <div class="column">
                     <h1 class="is-size-3">Site Title</h1>
                 </div>
                 <div class="column">
                     <div>
-                        <a href="https://simpletestgenerator.com/pages/legal/terms.html" target="_blank" class="has-text-dark is-size-5">Terms and Conditions</a>
+                        <a href="#" target="_blank" class="has-text-dark is-size-5">Terms and Conditions</a>
                     </div>
                     <div>
-                        <a href="https://simpletestgenerator.com/pages/legal/privacy.html" target="_blank" class="has-text-dark is-size-5">Privacy Policy</a>
+                        <a href="#" target="_blank" class="has-text-dark is-size-5">Privacy Policy</a>
                     </div>
-                        </div>
+                    <div>
+                        <a href="#" target="_blank" class="has-text-dark is-size-5">About Us</a>
+                    </div>
+                    <div>
+                        <a href="#" target="_blank" class="has-text-dark is-size-5">Contact Us</a>
                     </div>
                 </div>
             </div>

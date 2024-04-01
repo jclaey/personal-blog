@@ -4,7 +4,7 @@ import { getErrors } from "../../utils/getErrors.js"
 const loginPage = ({ errors }, req) => {
     return layout({ template: `
             <main>
-            <h1 class="title is-size-1">Admin Login</h1>
+            <h1 class="title is-size-1" id="title-admin-login">Admin Login</h1>
             <div>
                 ${errors ? 
                     `
