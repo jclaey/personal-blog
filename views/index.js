@@ -1,6 +1,6 @@
 import layout from "./layout.js"
 
-const indexPage = ({ posts }) => {
+const indexPage = ({ posts }, req) => {
     const renderedPosts = () => {
         return posts.map(post => {
             return `
@@ -34,7 +34,7 @@ const indexPage = ({ posts }) => {
                 ${renderedPosts()}
             </section>
         </main>
-    ` })
+    ` }, req)
 }
 
 export default indexPage
